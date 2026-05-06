@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Hero Rescue - Game Edukasi Lingkungan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #2c3e50;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(31,38,135,0.37);
+        }
+
+        .logo {
+            font-size: 3.5em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #28a745, #20c997);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.4em;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .hero-title {
+            font-size: 2.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .hero-desc {
+            font-size: 1.3em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .play-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.4em;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(40,167,69,0.4);
+        }
+
+        .play-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(40,167,69,0.6);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.95);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #28a745, #20c997, #17a2b8);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.6em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .levels {
+            background: rgba(255,255,255,0.95);
+            padding: 60px 40px;
+            border-radius: 25px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .levels-title {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .level-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .level-card:nth-child(2) {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .level-card:nth-child(3) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .level-card:hover {
+            transform: scale(1.05);
+        }
+
+        .level-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .level-title {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .scoring-system {
+            background: rgba(255,255,255,0.95);
+            padding: 60px 40px;
+            border-radius: 25px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .score-item {
+            padding: 30px;
+            border-radius: 15px;
+            font-size: 1.2em;
+        }
+
+        .score-good {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+        }
+
+        .score-bad {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+        }
+
+        .mission {
+            background: rgba(40,167,69,0.1);
+            border: 3px solid #28a745;
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .mission-icon {
+            font-size: 5em;
+            color: #28a745;
+            margin-bottom: 30px;
+        }
+
+        .mission-title {
+            font-size: 2.8em;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #fff;
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5em;
+            }
+            
+            .hero-title {
+                font-size: 2em;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo pulse">🌍 Eco Hero Rescue</h1>
+            <p class="subtitle">Jadilah Pahlawan Lingkungan!</p>
+        </header>
+
+        <section class="hero-section">
+            <h2 class="hero-title">Game Edukasi Pelestarian Lingkungan</h2>
+            <p class="hero-desc">
+                Berperan sebagai penjaga alam yang bertugas memperbaiki ekosistem yang rusak. 
+                Bersihkan sampah, tanam pohon, dan selamatkan hewan dari ancaman polusi! ayo selamatkan
+                ekosistem dengan cara mainkan game nya. ayo!
+            </p>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🧹</div>
+                <h3 class="feature-title">Bersihkan Sampah</h3>
+                <p>Kumpulkan sampah plastik, organik, dan anorganik untuk menjaga kebersihan lingkungan</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌱</div>
+                <h3 class="feature-title">Tanam Pohon</h3>
+                <p>Tanam berbagai jenis pohon untuk mengurangi karbon dan menciptakan oksigen segar</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🐢</div>
+                <h3 class="feature-title">Selamatkan Hewan</h3>
+                <p>Bantulah hewan-hewan yang terperangkap dalam jaring plastik dan polusi</p>
+            </div>
+        </section>
+
+        <section class="levels">
+            <h2 class="levels-title">🌟 3 Level Seru Menanti!</h2>
+            <div class="levels-grid">
+                <div class="level-card">
+                    <div class="level-icon">🌳</div>
+                    <h3 class="level-title">Hutan Hijau</h3>
+                    <p>Bersihkan sampah & lawan penebang liar</p>
+                </div>
+                <div class="level-card">
+                    <div class="level-icon">🌊</div>
+                    <h3 class="level-title">Laut Biru</h3>
+                    <p>Ambil plastik & selamatkan ikan</p>
+                </div>
+                <div class="level-card">
+                    <div class="level-icon">🏙️</div>
+                    <h3 class="level-title">Kota Bersih</h3>
+                    <p>Kurangi polusi & tanam tanaman</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="scoring-system">
+            <h2 style="font-size: 2.5em; color: #2c3e50; margin-bottom: 40px;">📊 Sistem Skor</h2>
+            <div class="score-grid">
+                <div class="score-item score-good">
+                    <div style="font-size: 2em; margin-bottom: 10px;">✅ +100 Poin</div>
+                    <strong>Aksi Baik:</strong><br>
+                    Bersihkan sampah, tanam pohon, selamatkan hewan
+                </div>
+                <div class="score-item score-bad">
+                    <div style="font-size: 2em; margin-bottom: 10px;">❌ -50 Poin</div>
+                    <strong>Kena Polusi:</strong><br>
+                    Terkena asap, limbah, atau sampah beracun
+                </div>
+            </div>
+        </section>
+
+        <section class="mission">
+            <div class="mission-icon">🎯</div>
+            <h2 class="mission-title">Misi Utama</h2>
+            <p style="font-size: 1.4em; color: #2c3e50; font-weight: bold;">
+                Mengajarkan pentingnya menjaga lingkungan dan dampak buruk polusi terhadap ekosistem Bumi! 🌱💚
+            </p>
+        </section>
+
+        <div class="footer">
+    <h3>Siap Menjadi Eco Hero?</h3>
+    <p>Dapatkan skor tertinggi dan selamatkan Bumi bersama teman-temanmu!</p>
+    <a href="https://scratch.mit.edu/projects/1312412492" target="_blank" class="play-btn" style="margin-top: 20px;">🚀 Mulai Petualangan!</a>
+    
+    <div class="creator-section" style="margin-top: 40px; padding-top: 30px; border-top: 2px solid rgba(255,255,255,0.3);">
+        <div class="creator-card">
+            <h4 style="color: #ffffff00; font-size: 1.5em; margin-bottom: 10px;">Dibuat oleh:</h4>
+            <h3 style="font-size: 1em; background: linear-gradient(45deg, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">MATAHARI LUTFI NOAH SUHARDI, MUHAMAD MEVISH AMMALY, NAZHIIFAH RAIHANA </h3>
+            <p style="margin: 10px 0; font-size: 1.1em;">Eco Hero Rescue Creator: SMP HEGERI 4 SUBANG</p>
+            <div class="social-links" style="margin-top: 20px;">
+                <a href="https://wa.me/6287753668060" target="_blank" style="color: #25D366; font-size: 1.5em; margin: 0 10px; text-decoration: none;">📱 WhatsApp</a>
+                <a href="https://www.instagram.com/smpn4subang_bisa?igsh=MWd1c2NzcjVtOHVveg==" target="_blank" style="color: #E4405F; font-size: 1.5em; margin: 0 10px; text-decoration: none;">📸 Instagram</a>
+                <a href="mailto:mataharilutfi012@gmail.com" style="color: #FF6B35; font-size: 1.5em; margin: 0 10px; text-decoration: none;">✉️ Email</a>
+            </div>
+        </div>
+    </div>
+    
+    <p style="margin-top: 30px; font-size: 0.9em; opacity: 0.8;">
+        © 2024 Eco Hero Rescue - Edukasi Lingkungan untuk Generasi Muda
+    </p>
+</div>
+
+    <script>
+        // Animasi scroll
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.feature-card, .level-card');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const cardVisible = 150;
+                if (cardTop < window.innerHeight - cardVisible) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Particle effect background
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '100vh';
+            particle.style.width = '6px';
+            particle.style.height = '6px';
+            particle.style.background = '#28a745';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '-1';
+            document.body.appendChild(particle);
+
+            const fallSpeed = Math.random() * 3 + 1;
+            const moveSpeed = Math.random() * 2 - 1;
+
+            function animate() {
+                const rect = particle.getBoundingClientRect();
+                if (rect.top > window.innerHeight) {
+                    particle.remove();
+                    return;
+                }
+                particle.style.top = (rect.top + fallSpeed) + 'px';
+                particle.style.left = (rect.left + moveSpeed) + 'px';
+                particle.style.opacity = 1 - (rect.top / window.innerHeight);
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        setInterval(createParticle, 300);
+    </script>
+</body>
+</html>
